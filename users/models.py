@@ -23,24 +23,10 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractUser):
-    ROLE_CHOICES = (
-        ("admin", "Admin"),
-        ("manager", "Manager"),
-        ("member", "Member"),
-    )
+    ROLE_CHOICES = ( ("admin", "Admin"), ("manager", "Manager"), ("member", "Member"), )
 
-    role = models.CharField(
-        max_length=20,
-        choices=ROLE_CHOICES,
-        default="member"
-    )
+    role = models.CharField( max_length=20, choices=ROLE_CHOICES, default="member" )
 
-    tenant = models.ForeignKey(
-        Tenant,
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True,
-        related_name="users"
-    )
+    tenant = models.ForeignKey( Tenant, on_delete=models.CASCADE, null=True, blank=True, related_name="users")
 
-    objects = UserManager()  # attach the custom manager
+    objects = UserManager()

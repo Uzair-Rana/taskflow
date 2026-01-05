@@ -34,4 +34,3 @@ class HealthCheckView(APIView):
             db_ok = False
         return Response({"status": "ok" if db_ok else "error", "database": db_ok})
 
-# Create your views here.
