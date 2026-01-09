@@ -9,7 +9,13 @@ class IsTenantActive(permissions.BasePermission):
 
 class ProjectViewSet(viewsets.ModelViewSet):
     serializer_class = ProjectSerializer
-    permission_classes = [IsTenantActive]
+    class IsAdminOrReadOnly(permissions.BasePermission):
+        def has_permission(self, request, view):
+            if request.method in permissions.SAFE_METHODS:
+                return True
+            return hasattr(request.user, "role") and request.user.role == "admin"
+
+    permission_classes = [IsTenantActive, IsAdminOrReadOnly]
 
     def get_queryset(self):
         return Project.objects.select_related("created_by").filter(tenant=self.request.user.tenant).order_by("-id")

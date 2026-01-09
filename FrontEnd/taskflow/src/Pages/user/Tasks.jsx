@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Sidebar from '../../components/Sidebar'
+import Sidebar from '../../Components/Sidebar'
 import { tasks } from '../../lib/api'
 import { useAuth } from '../../state/auth'
 
@@ -10,7 +10,7 @@ export default function UserTasks() {
   const [filter, setFilter] = useState({ status: '', project: '' })
   const load = async () => {
     const r = await tasks.list(filter.status ? { status: filter.status } : undefined)
-    setItems(r.data)
+    setItems(r.data?.results || r.data)
   }
   const loadUsers = async () => {
     if (user?.role !== 'admin') return

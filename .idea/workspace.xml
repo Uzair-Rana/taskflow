@@ -5,90 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4de45632-0760-49b0-9e85-b12e1005ddd5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/FrontEnd/taskflow/src/Components/Layout.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontEnd/taskflow/src/Components/Navbar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontEnd/taskflow/src/Components/Sidebar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontEnd/taskflow/src/Pages/AdminDash.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontEnd/taskflow/src/Pages/Landing.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontEnd/taskflow/src/Pages/Login.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontEnd/taskflow/src/Pages/Register.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontEnd/taskflow/src/Pages/UserDash.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FrontEnd/taskflow/tailwind.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/activity/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/activity/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/activity/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/activity/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/activity/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/activity/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/activity/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/activity/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/activity/urls_health.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/activity/utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/activity/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/consumers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/routing.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/serializers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/asgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/wsgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/serializers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/serializers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tenants/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tenants/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tenants/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tenants/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tenants/migrations/0002_alter_tenant_name.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tenants/migrations/0003_tenantsettings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tenants/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tenants/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tenants/serializers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tenants/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tenants/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tenants/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0002_alter_user_is_active_alter_user_role_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0003_alter_user_managers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/serializers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/tokens.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/urls_login.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/config/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/projects/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/projects/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/tenants/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/tenants/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/users/tokens.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/users/tokens.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/taskflow/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/taskflow/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/taskflow/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/taskflow/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/taskflow/src/Pages/Chat.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/taskflow/src/Pages/Chat.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/taskflow/src/Pages/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/taskflow/src/Pages/Register.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/taskflow/src/Pages/admin/Projects.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/taskflow/src/Pages/admin/Projects.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/taskflow/src/Pages/user/Projects.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/taskflow/src/Pages/user/Projects.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/taskflow/src/Pages/user/Tasks.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/taskflow/src/Pages/user/Tasks.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/taskflow/src/lib/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/taskflow/src/lib/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/taskflow/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/taskflow/src/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/taskflow/src/state/auth.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/taskflow/src/state/auth.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/taskflow/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/taskflow/vite.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,27 +40,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "D:/Djnago/teamflow",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Djnago/teamflow&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -144,7 +78,8 @@
       <workItem from="1766569176648" duration="18561000" />
       <workItem from="1767089048154" duration="15506000" />
       <workItem from="1767166429036" duration="68695000" />
-      <workItem from="1767687680192" duration="12263000" />
+      <workItem from="1767687680192" duration="30199000" />
+      <workItem from="1767867833720" duration="22289000" />
     </task>
     <servers />
   </component>

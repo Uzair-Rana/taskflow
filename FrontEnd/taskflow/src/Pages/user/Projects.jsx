@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react'
-import Sidebar from '../../components/Sidebar'
+import Sidebar from '../../Components/Sidebar'
 import { projects } from '../../lib/api'
 
 export default function UserProjects() {
   const [items, setItems] = useState([])
   const load = async () => {
-    const r = await projects.list()
-    setItems(r.data)
+    try {
+      const r = await projects.list()
+      setItems(r.data?.results || r.data)
+    } catch (err) {
+      alert(err?.response?.data?.detail || 'Failed to load projects')
+    }
   }
   useEffect(() => {
     load()

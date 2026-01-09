@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react'
-import Sidebar from '../../components/Sidebar'
+import Sidebar from '../../Components/Sidebar'
 import { projects } from '../../lib/api'
 
 export default function AdminProjects() {
   const [items, setItems] = useState([])
   const [mod, setMod] = useState({ open: false, id: null, name: '', description: '' })
   const load = async () => {
-    const r = await projects.list()
-    setItems(r.data)
+    try {
+      const r = await projects.list()
+      setItems(r.data?.results || r.data)
+    } catch (err) {
+      alert(err?.response?.data?.detail || 'Failed to load projects')
+    }
   }
   useEffect(() => {
     load()
@@ -17,16 +21,30 @@ export default function AdminProjects() {
   const save = async () => {
     if (!mod.name) return
     if (mod.id) {
-      await projects.update(mod.id, { name: mod.name, description: mod.description })
+      try {
+        await projects.update(mod.id, { name: mod.name, description: mod.description })
+      } catch (err) {
+        alert(err?.response?.data?.detail || 'Failed to update project')
+        return
+      }
     } else {
-      await projects.create({ name: mod.name, description: mod.description })
+      try {
+        await projects.create({ name: mod.name, description: mod.description })
+      } catch (err) {
+        alert(err?.response?.data?.detail || 'Failed to create project')
+        return
+      }
     }
     setMod({ open: false, id: null, name: '', description: '' })
     await load()
   }
   const remove = async (id) => {
-    await projects.remove(id)
-    await load()
+    try {
+      await projects.remove(id)
+      await load()
+    } catch (err) {
+      alert(err?.response?.data?.detail || 'Failed to delete project')
+    }
   }
   return (
     <div className="flex bg-slate-50 min-h-screen">

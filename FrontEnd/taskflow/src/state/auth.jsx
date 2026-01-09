@@ -15,6 +15,10 @@ export function AuthProvider({ children }) {
     }
     auth.me()
       .then((r) => setUser(r.data))
+      .catch(() => {
+        localStorage.removeItem('access')
+        localStorage.removeItem('refresh')
+      })
       .finally(() => setLoading(false))
   }, [])
 

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useAuth } from '../state/auth'
-import Sidebar from '../components/Sidebar'
+import Sidebar from '../Components/Sidebar'
 import { chat } from '../lib/api'
 
 export default function ChatPage() {
@@ -17,7 +17,8 @@ export default function ChatPage() {
   }, [])
   useEffect(() => {
     if (!user) return
-    const url = `ws://localhost:8000/ws/chat/${user.tenant.id}/?token=${localStorage.getItem('access')}`
+    const proto = window.location.protocol === 'https:' ? 'wss' : 'ws'
+    const url = `${proto}://${window.location.host}/ws/chat/${user.tenant.id}/?token=${localStorage.getItem('access')}`
     const ws = new WebSocket(url)
     ws.onmessage = (e) => {
       const d = JSON.parse(e.data)

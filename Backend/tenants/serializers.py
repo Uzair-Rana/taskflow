@@ -30,6 +30,11 @@ class TenantRegistrationSerializer(serializers.Serializer):
     admin_email = serializers.EmailField()
     admin_password = serializers.CharField(write_only=True)
 
+    def validate_tenant_name(self, value):
+        if Tenant.objects.filter(name=value).exists():
+            raise serializers.ValidationError("Organization name already exists.")
+        return value
+
     def create(self, validated_data):
         # Create tenant
         tenant = Tenant.objects.create(

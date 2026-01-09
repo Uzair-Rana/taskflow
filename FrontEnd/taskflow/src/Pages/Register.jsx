@@ -17,8 +17,14 @@ export default function Register() {
       await tenants.register(form)
       alert('Organization created')
       navigate('/login')
-    } catch {
-      alert('Error creating organization')
+    } catch (err) {
+      const data = err?.response?.data
+      const msg =
+        data?.message ||
+        data?.detail ||
+        (data && Array.isArray(data) ? data[0] : (typeof data === 'object' ? (Object.values(data)[0]?.[0] || Object.values(data)[0]) : null)) ||
+        'Error creating organization'
+      alert(msg)
     }
   }
 

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'http://localhost:8000'
+const baseURL = '/'
 
 export const api = axios.create({
   baseURL,
@@ -11,6 +11,7 @@ api.interceptors.request.use((config) => {
   if (token) {
     config.headers.Authorization = `Bearer ${token}`
   }
+  config.headers['Cache-Control'] = 'no-cache'
   return config
 })
 
@@ -42,9 +43,9 @@ api.interceptors.response.use(
         if (!refresh) throw new Error('No refresh token')
         let resp
         try {
-          resp = await axios.post(`${baseURL}/api/auth/token/refresh/`, { refresh })
+          resp = await axios.post(`${baseURL}api/auth/token/refresh/`, { refresh })
         } catch {
-          resp = await axios.post(`${baseURL}/api/auth/refresh/`, { refresh })
+          resp = await axios.post(`${baseURL}api/auth/refresh/`, { refresh })
         }
         const newAccess = resp.data.access
         localStorage.setItem('access', newAccess)
