@@ -36,12 +36,12 @@ export default function UserTasks() {
     await load()
   }
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-gradient-to-br from-white to-brand-50">
       <Sidebar role="member" />
-      <main className="flex-1 p-8 bg-white space-y-4">
+      <main className="flex-1 p-8 space-y-4">
         <h2 className="text-2xl font-bold">Tasks</h2>
         <div className="flex gap-3">
-          <select className="border rounded p-2" value={filter.status} onChange={(e) => setFilter({ ...filter, status: e.target.value })}>
+          <select className="border rounded-xl p-2 bg-white focus:ring-2 focus:ring-brand-500" value={filter.status} onChange={(e) => setFilter({ ...filter, status: e.target.value })}>
             <option value="">All</option>
             <option value="todo">To Do</option>
             <option value="in_progress">In Progress</option>
@@ -50,19 +50,19 @@ export default function UserTasks() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {items.map((t) => (
-            <div key={t.id} className="border rounded-xl p-4 space-y-2">
+            <div key={t.id} className="border rounded-xl p-4 space-y-2 bg-white shadow-soft hover:shadow-hover transition hover:-translate-y-0.5 border-slate-200">
               <div className="font-bold">{t.title}</div>
               <div className="text-slate-600">{t.description}</div>
               <div className="text-sm">Status: {t.status}</div>
               <div className="flex gap-2">
-                <button className="px-2 py-1 border rounded" onClick={() => changeStatus(t.id, 'todo')}>To Do</button>
-                <button className="px-2 py-1 border rounded" onClick={() => changeStatus(t.id, 'in_progress')}>In Progress</button>
-                <button className="px-2 py-1 border rounded" onClick={() => changeStatus(t.id, 'done')}>Done</button>
+                <button className="px-2 py-1 border rounded-xl bg-white hover:bg-brand-50" onClick={() => changeStatus(t.id, 'todo')}>To Do</button>
+                <button className="px-2 py-1 border rounded-xl bg-white hover:bg-brand-50" onClick={() => changeStatus(t.id, 'in_progress')}>In Progress</button>
+                <button className="px-2 py-1 border rounded-xl bg-white hover:bg-brand-50" onClick={() => changeStatus(t.id, 'done')}>Done</button>
               </div>
               {user?.role === 'admin' && (
                 <div className="flex gap-2 items-center">
                   <span className="text-sm">Assign:</span>
-                  <select multiple className="border rounded p-2" onChange={(e) => {
+                  <select multiple className="border rounded-xl p-2 bg-white focus:ring-2 focus:ring-brand-500" onChange={(e) => {
                     const ids = Array.from(e.target.selectedOptions).map((o) => Number(o.value))
                     assign(t.id, ids)
                   }}>
@@ -73,7 +73,7 @@ export default function UserTasks() {
                 </div>
               )}
               <div className="flex gap-2">
-                <input className="flex-1 border rounded p-2" placeholder="Comment" onKeyDown={(e) => {
+                <input className="flex-1 border rounded-xl p-2 bg-white focus:ring-2 focus:ring-brand-500 outline-none" placeholder="Comment" onKeyDown={(e) => {
                   if (e.key === 'Enter') addComment(t.id, e.target.value)
                 }} />
               </div>

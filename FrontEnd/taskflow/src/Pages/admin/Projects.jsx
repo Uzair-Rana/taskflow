@@ -47,14 +47,14 @@ export default function AdminProjects() {
     }
   }
   return (
-    <div className="flex bg-slate-50 min-h-screen">
+    <div className="flex bg-gradient-to-br from-white to-brand-50 min-h-screen">
       <Sidebar role="admin" />
       <main className="flex-1 p-8">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold">Projects</h2>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded" onClick={openNew}>New Project</button>
+          <button className="bg-gradient-to-r from-brand-600 to-accent-600 text-white px-4 py-2 rounded-xl hover:scale-[1.01] transition shadow-soft" onClick={openNew}>New Project</button>
         </div>
-        <div className="bg-white border rounded-xl overflow-hidden">
+        <div className="bg-white rounded-xl overflow-hidden shadow-soft border border-slate-200">
           <table className="w-full text-left">
             <thead className="bg-slate-50 border-b">
               <tr>
@@ -65,12 +65,12 @@ export default function AdminProjects() {
             </thead>
             <tbody className="divide-y">
               {items.map((p) => (
-                <tr key={p.id}>
+                <tr key={p.id} className="hover:bg-brand-50 transition">
                   <td className="p-4">{p.name}</td>
                   <td className="p-4">{p.description}</td>
                   <td className="p-4 space-x-2">
-                    <button className="text-blue-600" onClick={() => openEdit(p)}>Edit</button>
-                    <button className="text-red-600" onClick={() => remove(p.id)}>Delete</button>
+                    <button className="text-brand-700 hover:underline" onClick={() => openEdit(p)}>Edit</button>
+                    <button className="text-red-600 hover:underline" onClick={() => remove(p.id)}>Delete</button>
                   </td>
                 </tr>
               ))}
@@ -78,13 +78,13 @@ export default function AdminProjects() {
           </table>
         </div>
         {mod.open && (
-          <div className="fixed inset-0 bg-black/30 flex items-center justify-center p-4">
-            <div className="bg-white p-6 rounded-xl w-full max-w-md space-y-3">
-              <input className="w-full border p-2 rounded" placeholder="Name" value={mod.name} onChange={(e) => setMod((m) => ({ ...m, name: e.target.value }))} />
-              <textarea className="w-full border p-2 rounded" placeholder="Description" value={mod.description} onChange={(e) => setMod((m) => ({ ...m, description: e.target.value }))} />
+          <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl w-full max-w-md space-y-3 shadow-hover p-6 border border-slate-200">
+              <input className="w-full border p-3 rounded-xl focus:ring-2 focus:ring-brand-500 outline-none" placeholder="Name" value={mod.name} onChange={(e) => setMod((m) => ({ ...m, name: e.target.value }))} />
+              <textarea className="w-full border p-3 rounded-xl focus:ring-2 focus:ring-brand-500 outline-none" placeholder="Description" value={mod.description} onChange={(e) => setMod((m) => ({ ...m, description: e.target.value }))} />
               <div className="flex gap-2 justify-end">
                 <button className="px-3 py-2" onClick={() => setMod({ open: false, id: null, name: '', description: '' })}>Cancel</button>
-                <button className="bg-blue-600 text-white px-3 py-2 rounded" onClick={save}>Save</button>
+                <button className="bg-gradient-to-r from-brand-600 to-accent-600 text-white px-4 py-2 rounded-xl hover:scale-[1.01] transition shadow-soft" onClick={save}>Save</button>
               </div>
             </div>
           </div>

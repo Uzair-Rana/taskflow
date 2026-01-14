@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 
 export default function Layout({ user, children }) {
     return (
-        <div className="flex min-h-screen bg-slate-50">
+        <div className="flex min-h-screen bg-gradient-to-br from-white to-brand-50">
             {/* Sidebar - Dynamic based on role */}
             <Sidebar role={user?.role} />
 

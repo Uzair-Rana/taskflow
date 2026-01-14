@@ -12,12 +12,25 @@ import UserProjects from './pages/user/Projects'
 import UserTasks from './pages/user/Tasks'
 import ChatPage from './pages/Chat'
 import { AuthProvider, useAuth } from './state/auth'
+import SuperAdmin from './pages/SuperAdmin'
 
 function Protected({ children, role }) {
   const { user, loading } = useAuth()
   if (loading) return null
   if (!user) return <Navigate to="/login" />
-  if (role && user.role !== role) return <Navigate to={user.role === 'admin' ? '/admin' : '/user'} />
+  if (role && user.role !== role) {
+    // Allow superuser as "admin" scope
+    if (role === 'admin' && user.is_superuser) return children
+    return <Navigate to={user.role === 'admin' ? '/admin' : '/user'} />
+  }
+  return children
+}
+
+function ProtectedSuper({ children }) {
+  const { user, loading } = useAuth()
+  if (loading) return null
+  if (!user) return <Navigate to="/login" />
+  if (!user.is_superuser) return <Navigate to={user.role === 'admin' ? '/admin' : '/user'} />
   return children
 }
 
@@ -27,9 +40,24 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/register" element={<Register />} />
+          <Route
+            path="/register"
+            element={
+              <ProtectedSuper>
+                <Register />
+              </ProtectedSuper>
+            }
+          />
           <Route path="/login" element={<Login />} />
 
+          <Route
+            path="/superadmin"
+            element={
+              <ProtectedSuper>
+                <SuperAdmin />
+              </ProtectedSuper>
+            }
+          />
           <Route
             path="/admin"
             element={

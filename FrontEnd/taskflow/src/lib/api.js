@@ -77,6 +77,8 @@ export const tenants = {
   users: () => api.get('/api/tenants/users/'),
   settingsGet: () => api.get('/api/tenant/settings/'),
   settingsPatch: (payload) => api.patch('/api/tenant/settings/', payload),
+  all: () => api.get('/api/tenants/all/'),
+  delete: (id) => api.delete(`/api/tenants/delete/${id}/`),
 }
 
 export const usersApi = {

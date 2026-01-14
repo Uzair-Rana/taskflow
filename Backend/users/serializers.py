@@ -9,10 +9,11 @@ class TenantInfoSerializer(serializers.ModelSerializer):
 
 class CurrentUserSerializer(serializers.ModelSerializer):
     tenant = TenantInfoSerializer(read_only=True)
+    is_superuser = serializers.BooleanField(read_only=True)
 
     class Meta:
         model = User
-        fields = ["id", "username", "email", "role", "tenant"]
+        fields = ["id", "username", "email", "role", "tenant", "is_superuser"]
 
 class AdminUserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)

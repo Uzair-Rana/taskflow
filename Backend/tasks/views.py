@@ -15,13 +15,19 @@ from activity.utils import log_activity
 
 class IsTenantActive(permissions.BasePermission):
     def has_permission(self, request, view):
-        return request.user.is_authenticated and request.user.tenant and request.user.tenant.is_active
+        if not request.user.is_authenticated:
+            return False
+        if getattr(request.user, 'is_superuser', False):
+            return True
+        return request.user.tenant and request.user.tenant.is_active
 
 class TaskViewSet(viewsets.ModelViewSet):
     permission_classes = [IsTenantActive]
     filterset_fields = ["status", "project", "due_date"]
 
     def get_queryset(self):
+        if getattr(self.request.user, 'is_superuser', False):
+            return Task.objects.select_related("project", "created_by").all().order_by("-id")
         return Task.objects.select_related("project", "created_by").filter(tenant=self.request.user.tenant).order_by("-id")
 
     def get_serializer_class(self):
@@ -36,7 +42,10 @@ class TaskViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=["patch"], url_path="status")
     def change_status(self, request, pk=None):
         try:
-            task = Task.objects.get(pk=pk, tenant=request.user.tenant)
+            if getattr(request.user, 'is_superuser', False):
+                task = Task.objects.get(pk=pk)
+            else:
+                task = Task.objects.get(pk=pk, tenant=request.user.tenant)
         except Task.DoesNotExist:
             return Response({"detail": "Not found."}, status=status.HTTP_404_NOT_FOUND)
         serializer = TaskStatusSerializer(task, data=request.data, partial=True)
@@ -48,7 +57,10 @@ class TaskViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=["post"], url_path="assign")
     def assign_users(self, request, pk=None):
         try:
-            task = Task.objects.get(pk=pk, tenant=request.user.tenant)
+            if getattr(request.user, 'is_superuser', False):
+                task = Task.objects.get(pk=pk)
+            else:
+                task = Task.objects.get(pk=pk, tenant=request.user.tenant)
         except Task.DoesNotExist:
             return Response({"detail": "Not found."}, status=status.HTTP_404_NOT_FOUND)
         serializer = TaskAssignSerializer(data=request.data)
