@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom'
+import { Crown } from 'lucide-react'
 import Landing from './pages/Landing'
 import Login from './pages/Login'
 import Register from './pages/Register'
@@ -35,9 +36,23 @@ function ProtectedSuper({ children }) {
 }
 
 export default function App() {
+  const SuperTopTab = () => {
+    const { user } = useAuth()
+    if (!user?.is_superuser) return null
+    return (
+      <Link
+        to="/superadmin"
+        className="fixed top-4 right-6 z-50 bg-white text-slate-800 px-4 py-2 rounded-full shadow-soft hover:bg-brand-50 hover:text-brand-700 transition border border-slate-200 flex items-center gap-2"
+        title="Super Admin"
+      >
+        <Crown size={18} /> Super Admin
+      </Link>
+    )
+  }
   return (
     <AuthProvider>
       <BrowserRouter>
+        <SuperTopTab />
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route

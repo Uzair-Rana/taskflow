@@ -41,7 +41,7 @@ class TenantRegistrationSerializer(serializers.Serializer):
             name=validated_data["tenant_name"]
         )
 
-        # Create admin user (tenant-scoped)
+        # Create admin user (tenant-scoped) with provided or generated password
         password = validated_data.get("admin_password")
         if not password:
             import secrets
@@ -54,7 +54,8 @@ class TenantRegistrationSerializer(serializers.Serializer):
             tenant=tenant,
         )
 
-        return tenant
+        # Return tuple to allow view to email credentials
+        return tenant, admin_user, password
 
 
 class TenantInviteSerializer(serializers.Serializer):

@@ -20,32 +20,38 @@ class TenantRegistrationView(APIView):
             return Response({"detail": "Only global admin can register tenants."}, status=status.HTTP_403_FORBIDDEN)
         serializer = TenantRegistrationSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        tenant = serializer.save()
-        # Email admin credentials/link
-        admin_email = serializer.validated_data.get("admin_email")
-        admin_username = serializer.validated_data.get("admin_username")
-        # Password may be generated; re-create to obtain it
-        # Rebuild password by re-invoking generate logic is not trivial; better fetch the created admin
-        admin_user = tenant.users.filter(role='admin').first()
+        (tenant, admin_user, password) = serializer.save()
+        # Build login URL for admin dashboard
         login_url = f"{getattr(settings, 'FRONTEND_URL', 'http://localhost:5173')}/login?next=/admin"
-        if admin_user:
-            send_mail(
-                subject="Your Tenant Admin Access",
-                message=f"Hello {admin_username},\nYour account is ready.\nUsername: {admin_user.username}\nPlease use your provided/temporary password.\nLogin here: {login_url}",
-                from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'noreply@teamflow.local'),
-                recipient_list=[admin_email],
-                fail_silently=True,
-            )
-        admin_user = None
+        email_sent = False
+        email_error = None
         try:
-            admin_user = tenant.users.filter(role='admin').first()
-        except Exception:
-            admin_user = None
-        log_activity(tenant, admin_user, "tenant_registered", "Tenant", tenant.id)
+            send_mail(
+                subject=f"TeamFlow Admin Credentials — {tenant.name}",
+                message=(
+                    f"Tenant: {tenant.name}\n"
+                    f"Admin: {admin_user.username}\n"
+                    f"Password: {password}\n"
+                    f"Login: {login_url}\n"
+                ),
+                from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'noreply@teamflow.local'),
+                recipient_list=[admin_user.email],
+                fail_silently=False,
+            )
+            email_sent = True
+        except Exception as e:
+            email_sent = False
+            email_error = str(e)
+        log_activity(tenant, request.user, "tenant_registered", "Tenant", tenant.id)
         return Response(
             {
                 "message": "Tenant registered successfully",
                 "tenant_id": tenant.id,
+                "admin_username": admin_user.username,
+                "temp_password": password,
+                "login_url": login_url,
+                "email_sent": email_sent,
+                "email_error": email_error,
             },
             status=status.HTTP_201_CREATED
         )
